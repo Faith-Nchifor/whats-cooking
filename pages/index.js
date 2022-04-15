@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 
-
 export default function Home() {
+  //console.log(users);
   return (
     <div className='container'>
       <Head>
@@ -34,6 +34,7 @@ export default function Home() {
         </div>
       <Link href={'/newRestaurant'} className='text-decoration-none'>Register</Link>
       <p>or</p>
+      <Link href={'/login'} className='text-decoration-none'>Login</Link>
       
       </main>
 
@@ -52,3 +53,4 @@ export default function Home() {
     </div>
   )
 }
+

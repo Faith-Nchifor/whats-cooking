@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import React,{useState} from 'react';
+import { useRouter } from 'next/router';
 
 export default function newRestaurant() {
     let restaurants=[];
+    const router=useRouter()
     const [restau,setRestau]=useState({
         name:'',
         city:'',
@@ -15,16 +17,38 @@ export default function newRestaurant() {
             [e.target.name]:e.target.value
         })
     }
-    const addRestaurant=(e)=>{
+     function  addRestaurant(e){
         e.preventDefault();
         //console.log(restau);
         restaurants.push(restau);
-        setRestau({
+        try{
+             fetch('/api/restaurants',{
+                body:JSON.stringify(restau),
+                method:'POST'
+            })
+            .then(resp=>{
+                if(resp.ok)
+               return resp.json()
+            })
+            .then(resp=>{
+                console.log(resp);
+                alert('success')
+                router.push('/login')
+                /* setRestau({
             name:'',
             city:'',
             email:'',
             password:''
-        })
+        })*/
+            })
+            .catch(e=>{
+                console.log(e);
+            })
+        }
+        catch(e){
+            console.log(e);
+        }
+       
 
     }
   return (
