@@ -1,8 +1,8 @@
-import React from 'react'
+import { useState } from 'react'
 
-export default function  login() {
-  const [email,setEmail]=React.useState('')
-  const [password,setPassword]= React.useState('')
+export default function  Login() {
+  const [email,setEmail]=useState('')
+  const [password,setPassword]= useState('')
     const login=(e)=>{
       e.preventDefault();
       fetch('/api/restaurant/login',{

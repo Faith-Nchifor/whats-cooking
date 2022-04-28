@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import React,{useState} from 'react';
+import {useState} from 'react';
 import { useRouter } from 'next/router';
 
-export default function newRestaurant() {
+export default function NewRestaurant() {
     let restaurants=[];
     const router=useRouter()
     const [restau,setRestau]=useState({
