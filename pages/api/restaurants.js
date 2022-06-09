@@ -1,6 +1,6 @@
 const { connectToDatabase } = require('../../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
-
+const Restaurants = require('../../lib/models')
 export default async function handler(req, res) {
      
     // switch the methods
@@ -15,8 +15,9 @@ export default async function handler(req, res) {
                let body=JSON.parse(req.body)
                
                // connect to the database
-               let { db } = await connectToDatabase();
-               await db.collection('restaurant').insertOne(body);
+               //let { db } = await connectToDatabase();
+               console.log('uri is '+process.env.uri);
+               await Restaurants.insertOne(body);
                 res.status(201).json({message:'success!'})
           }
           catch(error){

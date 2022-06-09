@@ -9,7 +9,8 @@ export default function NewRestaurant() {
         name:'',
         city:'',
         email:'',
-        password:''
+        password:'',
+        //street:""
     })
     const editRestau=(e)=>{       
         setRestau({
@@ -32,8 +33,8 @@ export default function NewRestaurant() {
             })
             .then(resp=>{
                 console.log(resp);
-                alert('success')
-                router.push('/login')
+               // alert('success')
+               // router.push('/login')
                 /* setRestau({
             name:'',
             city:'',
