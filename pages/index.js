@@ -33,9 +33,7 @@ export default function Home() {
           <li className="list-group-item">Wait for Orders</li>
         </ul>
         </div>
-      <Link href={'/signup'} className='text-decoration-none'>Register</Link>
-      <p>or</p>
-      <Link href={'/login'} className='text-decoration-none'>Login</Link>
+      
       
       </main>
 

@@ -18,7 +18,7 @@ export default function About() {
         </h1>
 
         <p className={styles.description}>
-          Get started with the following steps {' '}
+          Get started with the following stepses {' '}
           
         </p>
 

@@ -10,11 +10,15 @@
   },
   "dependencies": {
     "archetype-js": "^0.6.1",
+    "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.5.0",
+    "mongoose": "^6.3.6",
     "next": "12.1.4",
     "next-auth": "^4.3.4",
     "react": "18.0.0",
+    "react-bootstrap": "^2.4.0",
     "react-dom": "18.0.0"
   },
   "devDependencies": {
