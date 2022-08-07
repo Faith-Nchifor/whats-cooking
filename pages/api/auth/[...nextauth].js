@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth'
 import connectToDatabase from '../../../lib/mongodb'
-import Restaurant from '../../../lib/models'
+import Restaurant from '../../../lib/models/restaurant'
 
 import GoogleProvider from 'next-auth/providers/google'
 

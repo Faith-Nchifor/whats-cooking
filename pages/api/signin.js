@@ -1,5 +1,5 @@
 import connectToDatabase from '../../lib/mongodb';
-import Restaurant from '../../lib/models';
+import Restaurant from '../../lib/models/restaurant';
 const jwt= require('jsonwebtoken')
 let jwtExpirySecs=600
 export default async function handler(req, res) {

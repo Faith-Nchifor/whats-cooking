@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React,{useState} from 'react'
-import {Accordion, Col, Modal} from 'react-bootstrap'
+import {Accordion, Col, Form, Modal} from 'react-bootstrap'
 
 export default function Menu({day}) {
     const [menu,setMenu]=useState([])
@@ -26,7 +26,8 @@ export default function Menu({day}) {
 
     const addItem=(e)=>{
         e.preventDefault();
-        if(item.trim().length>1){
+        if(item.trim().length>1 && !menu.includes(item)){
+
             menu.push(item)
             setItem('')
         }
@@ -35,11 +36,12 @@ export default function Menu({day}) {
     }
     function dropItem(item2Drop){
         console.log(menu.indexOf(item2Drop))
-    var newMenu=menu.splice(menu.indexOf(item2Drop),1)
+    //var newMenu=menu.splice(menu.indexOf(item2Drop),1)
+      //  setMenu(newMenu)
+      var newMenu=menu.filter(menuItem=>{
+        return menuItem != item2Drop // adjust
+    })
         setMenu(newMenu)
-        /*setMenu(menu.filter(menuItem=>{
-            menuItem != item2Drop // adjust
-        }))*/
         
     }
   return (
@@ -53,7 +55,7 @@ export default function Menu({day}) {
                         {menu.length>0 && menu.map((dish,i)=>{
                             return(
                                 <tr key={i}>
-                                    <td><li >{dish} </li></td>
+                                    <td><Form.Control type='text' value={dish} name={menu.indexOf(dish)} /> </td>
                                     <td className='border border-2' onClick={()=>dropItem(dish)}>drop</td>
                                 </tr>
                                 
