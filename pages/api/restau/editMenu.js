@@ -3,6 +3,7 @@
 
 export default function handler(req, res) {
     let {menu,day}=req.body
+    res.send('hi')
     
   }
   

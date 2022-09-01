@@ -11,7 +11,7 @@ export default function Profile(){
         }
         axios.get('/api/restau/getProfile')
         .then(resp=>{
-            //console.log(resp.data)
+            console.log(resp.data)
             let data=resp.data
             setUserData({
                 name:data.name,

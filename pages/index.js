@@ -3,8 +3,25 @@ import Image from 'next/image'
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 import Header from '../components/header';
+import axios from 'axios';
+import { useEffect } from 'react';
 
-export default function Home() {
+export default function Home({datas}) {
+  useEffect( ()=>{
+    
+   axios.get('./api/restau/get').then(
+      resp=>{
+        console.log(resp.data);
+      }
+    ).catch(
+      e=>{
+        console.log(e);
+      }
+    )
+  
+ 
+    
+  },[])
   //console.log(users);
   return (
     <div className='container'>
@@ -52,4 +69,24 @@ export default function Home() {
     </div>
   )
 }
+
+/*export async function getServerSideProps(context) {
+  
+  
+
+  
+  const resp =await axios.get('api/hello.js')
+  const data= await resp.data
+   return{
+    props:{
+      data:data|| null
+    }
+  }
+ 
+ // }
+  //catch(e){
+    //console.log(e);
+  //}
+  
+}*/
 

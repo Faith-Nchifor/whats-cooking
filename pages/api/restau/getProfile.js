@@ -1,5 +1,5 @@
 import connectToDatabase from '../../../lib/mongodb';
-import Restaurant from '../../../lib/models';
+import Restaurant from '../../../lib/models/restaurant';
 import { getSession } from "next-auth/react"
 export default async function handler(req, res) {
      console.log('get profile information');
