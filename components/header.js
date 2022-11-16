@@ -15,6 +15,9 @@ export default function Header() {
             <li className="nav-item">
             <Link className="nav-link" href="/restaurant/profile">Profile</Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" href="/restaurant/menu">My Menu</Link>
+          </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Restaurants</a>
             </li>

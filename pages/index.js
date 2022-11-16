@@ -4,20 +4,26 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 import Header from '../components/header';
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Home({datas}) {
+  const [restaus,setRestaus]=useState([])
+  const [loading,setLoading]=useState(false)
+  const router=useRouter()
   useEffect( ()=>{
-    
+    setLoading(true)
    axios.get('./api/restau/get').then(
       resp=>{
         console.log(resp.data);
+        setRestaus(resp.data)
       }
     ).catch(
       e=>{
         console.log(e);
       }
     )
+    .finally(()=>setLoading(false))
   
  
     
@@ -31,12 +37,46 @@ export default function Home({datas}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <Header/>
+        {loading===true &&(
+          <div className="spinner-border mx-auto text-center" role="status">
+            <span className="sr-only"></span>
+          </div>
+        )}
       <main className={styles.main}>
         <h1 className={styles.title}>
         Welcome To Chop don done!
         </h1>
+        <p className='fs-2 text-center'>Find a Restaurant and Menu Below</p>
+        <div className='row mx-auto'>
+            {restaus.length>0 &&(
+              restaus.map(r=>{
+                return(
+                  <div key={r._id} className='col-11 col-md-6 col-lg-3 card mx-auto'>
+                    <Image 
+                      className='card-img'
+                      alt='img'
+                      src='https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg'
+                      height={200}
+                      width={250}
+                    />
+                    <p><b>{r.name}</b></p>
+                    <p>{r.city}</p>
+                    <button className='btn btn-primary' onClick={()=>router.push({
+                      pathname:'/restaurant/restaurant',
+          
+                      query:{
+                        id:r._id
+                      }
+                    })}>
+                      View more
+                    </button>
 
-        <p className={styles.description}>
+                  </div>
+                )
+              })
+            )}
+          </div>
+        {/*<p className={styles.description}>
           Get started with the following steps {' '}
           
         </p>
@@ -49,7 +89,7 @@ export default function Home({datas}) {
           <li className="list-group-item">Update Your Menu</li>
           <li className="list-group-item">Wait for Orders</li>
         </ul>
-        </div>
+        </div>*/}
       
       
       </main>
