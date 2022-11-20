@@ -3,7 +3,7 @@ import connectToDatabase from '../../../lib/mongodb';
 import Menu from '../../../lib/models/menu';
 
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
+//set menu items
 export default async function handler(req, res) {
     let {menu,day}=req.body
     console.log(req.body);
@@ -19,7 +19,10 @@ export default async function handler(req, res) {
         Menu.findOneAndUpdate({
           restaurant:session.user.email,
           
-        },{[day]:menu}).then(
+        },{[day]:menu},
+        {upsert:true,
+        new:true}
+        ).then(
           result=>{
             console.log(result)
             res.status(200).send(result)

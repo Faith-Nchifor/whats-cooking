@@ -1,11 +1,13 @@
 import axios from 'axios'
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {Accordion, Col, Form, Modal} from 'react-bootstrap'
 
 export default function Menu({day}) {
     const [menu,setMenu]=useState([])
+
     const [show,setShow]=useState(false)
     const [msg,setMsg]=useState('')
+    
     const saveDay=()=>{
         axios.post('/api/restau/editMenu',{
             day:day,
