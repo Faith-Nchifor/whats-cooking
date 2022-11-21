@@ -6,6 +6,7 @@ import Header from '../components/header';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Spinner from '../components/spinner';
 
 export default function Home({datas}) {
   const [restaus,setRestaus]=useState([])
@@ -38,9 +39,7 @@ export default function Home({datas}) {
       </Head>
         <Header/>
         {loading===true &&(
-          <div className="spinner-border mx-auto text-center" role="status">
-            <span className="sr-only"></span>
-          </div>
+          <Spinner/>
         )}
       <main className={styles.main}>
         <h1 className={styles.title}>

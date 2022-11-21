@@ -8,7 +8,7 @@ export default async function handler(req, res) {
      const session = await getSession({ req });
     
      
-    if(!session.user){
+    if(!session || !session.user){
      return '/'
     }
               try{

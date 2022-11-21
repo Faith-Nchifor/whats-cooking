@@ -5,18 +5,16 @@ export default function Header() {
     const {data:session}=useSession();
     if(session){
         return (
-            <ul className="nav">
+            <ul className="nav justify-content-center">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Active</a>
+              <Link className="nav-link active" aria-current="page" href="/">Home</Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Home</a>
-            </li>
-            <li className="nav-item">
+            
+            <li className="nav-item mx-2">
             <Link className="nav-link" href="/restaurant/profile">Profile</Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" href="/restaurant/menu">My Menu</Link>
+          <li className="nav-item mx-2 ">
+            <Link className="nav-lin" href="/restaurant/menu">My Menu</Link>
           </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Restaurants</a>
