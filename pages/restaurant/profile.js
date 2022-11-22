@@ -31,22 +31,22 @@ export default function Profile(){
         city:''
     })
     return(
-        <div className="col col-10 col-md-8 col-md-6 mx-auto">
+        <div className="col col-10 col-md-8 col-md-6 mx-auto" id='profile-page'>
             <div className="card ">
                 <img src="#" alt="pic" className='restau-pic d-block'/>
                 <button className="btn btn-sm">Edit Profile Pic</button>
-                <form>
+                <form className='d-block' >
                     <div>
-                        <label>Name</label>
-                        <input type={'text'} required value={userData.name}/>
+                        <label>Name:</label>
+                        <input type={'text'} required value={userData.name} className='form-control'/>
                     </div>
                     <div>
-                        <label>City</label>
-                        <input type={'text'} required value={userData.city}/>
+                        <label>City:</label>
+                        <input type={'text'} required value={userData.city} className='form-control'/>
                     </div>
                     <div>
-                        <label>Email</label>
-                        <input type={'email'} required value={userData.email}/>
+                        <label>Email:</label>
+                        <input type={'email'} required value={userData.email} className='form-control'/>
                     </div>
                     <Button>Save Changes</Button>
                 </form>

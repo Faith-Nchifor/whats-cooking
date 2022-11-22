@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+#profile-page{
+  position:relative;
+  top:10vh
+}

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       await connectToDatabase();
       Restaurant.find().then(
         result=>{
-          console.log(result)
+          console.log(result.length)
           res.status(200).send(result)
         }
       )
