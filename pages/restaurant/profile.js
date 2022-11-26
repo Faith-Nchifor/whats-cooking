@@ -1,15 +1,23 @@
 import { Button } from "react-bootstrap"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSession } from "next-auth/react"
 import { useRouter } from 'next/router';
+import Image from 'next/image'
 import axios from "axios";
+
+// i will use a custom hook to do something here-- oh, i remember! to save profile to database
+function updateProfile(profile) {
+    const [isSaved,setIsSaved]=useState(false);
+
+}
 
 export default function Profile(){
     useEffect(()=>{
         if(!session){
          router.push('/')
         }
-        axios.get('/api/restau/getProfile')
+        
+       /* axios.get('/api/restau/getProfile')
         .then(resp=>{
             console.log(resp.data)
             let data=resp.data
@@ -21,8 +29,10 @@ export default function Profile(){
         })
         .catch(e=>{
             console.log(e);
-        })
+        })*/
     },[])
+    const ref=useRef()
+    
     const router= useRouter()
     const {data:session}=useSession();
     const [userData,setUserData]=useState({
@@ -35,20 +45,31 @@ export default function Profile(){
             <div className="card ">
                 <img src="#" alt="pic" className='restau-pic d-block'/>
                 <button className="btn btn-sm">Edit Profile Pic</button>
-                <form className='d-block' >
-                    <div>
-                        <label>Name:</label>
-                        <input type={'text'} required value={userData.name} className='form-control'/>
+                <form className='' >
+                    <div className="text-center">
+                    <Image 
+                      className='card-img'
+                      alt='img'
+                      src={process.env.default_img}
+                      height={200}
+                      width={250}
+                    />
                     </div>
-                    <div>
-                        <label>City:</label>
-                        <input type={'text'} required value={userData.city} className='form-control'/>
+                    <div className='col-md-8 col-lg-6 mx-auto'>
+                        <div>
+                            <label>Name:</label>
+                            <input type={'text'} required value={userData.name} className='form-control'/>
+                        </div>
+                        <div>
+                            <label>City:</label>
+                            <input type={'text'} required value={userData.city} className='form-control'/>
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            <input type={'email'} required value={userData.email} className='form-control'/>
+                        </div>
+                        <Button className='d-block mx-auto'>Save Changes</Button>
                     </div>
-                    <div>
-                        <label>Email:</label>
-                        <input type={'email'} required value={userData.email} className='form-control'/>
-                    </div>
-                    <Button>Save Changes</Button>
                 </form>
             </div>
         </div>
