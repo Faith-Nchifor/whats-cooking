@@ -6,8 +6,8 @@ import Menu from '../../../lib/models/menu';
 //set menu items
 export default async function handler(req, res) {
     let {menu,day}=req.body
-    console.log(req.body);
-    //res.send('hi')
+   // console.log(req.body);
+    
     try{
       const session = await getSession({ req });
       if(!session){
