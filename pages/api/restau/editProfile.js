@@ -7,29 +7,36 @@ import { getSession } from "next-auth/react"
 
 cloudinary.config({ 
     cloud_name: process.env.cloud_name, 
-    cloudinary_api_key: process.env.cloudinary_api_key, 
-    cloudinary_api_secret: process.env.cloudinary_api_secret
+    api_key: process.env.cloudinary_api_key, 
+    api_secret: process.env.cloudinary_api_secret
   });
 const saveFile = async (file) => {
     const data = fs.readFileSync(file.filepath);
     const pId= Date.now()
     const fileLoc=`./temps/${pId}`
     fs.writeFileSync(fileLoc, data);
-   
-    cloudinary.uploader.upload(file.filepath,
-    { public_id: pId }, 
-    function(error, result) 
+   try{
+   const result=await cloudinary.uploader.upload(file.filepath,
+    { public_id: pId })
+    fs.unlinkSync(fileLoc);
+    return result;
+   }catch(e){
+    console.log(e);
+    return null
+    
+   }
+   /* function(error, result) 
     {
         if(error) {
             console.log(error)
             return null;
         }
        else  {
-        console.log(result);
-        fs.unlinkSync(fileLoc);
+        //console.log(result);
+        
         return result;
     }
-     });
+     });*/
     
   };
 
@@ -63,6 +70,7 @@ export default async function handler(req, res) {
                saveFile(files.img).then(
                     img=>{
                         if(img!==null){
+                          console.log('image:' +img);
                             updateDatabase(session,fields.name,fields.email,fields.city,img,res)
                             
                         }
