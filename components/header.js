@@ -10,16 +10,16 @@ export default function Header() {
               <Link className="nav-link active" aria-current="page" href="/">Home</Link>
             </li>
             
-            <li className="nav-item mx-2">
+            <li className="nav-item mx-md-2">
             <Link className="nav-link" href="/restaurant/profile">Profile</Link>
           </li>
-          <li className="nav-item mx-2 ">
-            <Link className="nav-lin" href="/restaurant/menu">My Menu</Link>
+          <li className="nav-item mx-md-2 ">
+            <Link className="nav-link " href="/restaurant/menu">My Menu</Link>
           </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Restaurants</a>
+            <li className="nav-item mx-md-2">
+              <Link className="nav-link" href="#">Restaurants</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item mx-md-2">
                  <button className="btn btn-primary " onClick={()=>signOut()}>Sign Out</button>                 
             </li>
           </ul>
@@ -27,18 +27,18 @@ export default function Header() {
     }
   return (
     <ul className="nav">
-  <li className="nav-item">
-    <a className="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link" href="#">Home</a>
-  </li>
   
-  <li className="nav-item">
+     <li className="nav-item mx-md-2">
+        <Link className="nav-link active" aria-current="page" href="/">Home</Link>
+      </li>
+      <li className="nav-item mx-md-2">
+        <Link className="nav-link active" aria-current="page" href="about.js">About</Link>
+      </li>
+  <li className="nav-item mx-md-2">
       
         <button className="btn btn-primary " onClick={()=>signIn()}>Sign In</button>
   </li>
-  <li className="nav-item">
+  <li className="nav-item mx-md-2">
     <Link href={'/signup'} className='text-decoration-none'>Register</Link></li>
 </ul>
   )
