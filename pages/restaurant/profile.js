@@ -9,6 +9,7 @@ import Spinner from "../../components/spinner";
 // i will use a custom hook to do something here-- oh, i remember! to save profile to database
 function updateProfile(profile) {
     const [isSaved,setIsSaved]=useState(false);
+    
 
 }
 
@@ -37,7 +38,7 @@ export default function Profile(){
         })
         .finally(()=>setLoading(false))
     },[])
-    const imgRef=useRef(null)
+    const imgRef=useRef()
     
     const router= useRouter()
     const {data:session}=useSession();
@@ -58,11 +59,11 @@ export default function Profile(){
         fd.append('name',userData.name)
         fd.append('email',userData.email)
         fd.append('city',userData.city)
-        fd.append('image_id')
+        fd.append('product_id',userData.image.product_id)
         fd.append('img',img)
-            
+            console.log(userData); 
            // setLoading(true)
-          axios.post('/api/restau/editProfile',fd)
+          /*axios.post('/api/restau/editProfile',fd)
             .then(resp=>{
                 
                 let data=resp.data
@@ -73,7 +74,7 @@ export default function Profile(){
             .catch(e=>{
                 console.log(e);
             })
-            
+            */
            // .finally(()=>setLoading(false))
 
     }
@@ -82,6 +83,19 @@ export default function Profile(){
             ...userData,
             [e.target.name]:e.target.value
         })
+    }
+    const changeImg=(e)=>{
+        let file=e.target.files[0];
+        let obj=URL.createObjectURL(file)
+        setUserData({
+            ...userData,
+            image:{
+                ...userData.image,
+                url: obj
+            }
+        })
+        console.log(obj);
+        setImg(file)
     }
     return(
         <div className="col col-10 col-md-8 col-md-6 mx-auto" id='profile-page'>
@@ -93,7 +107,7 @@ export default function Profile(){
                 <button className="btn btn-sm" onClick={focusInput}>Edit Profile Pic</button>
                 <form className='' >
                     <div className="text-center">
-                    <input type='file' accept='image/JPEG,image/jpg, image/PNG' ref={imgRef} className='d-none' onChange={e=>setImg(e.target.files[0])}/>
+                    <input type='file' accept='image/JPEG,image/jpg, image/PNG' ref={imgRef} className='d-none' onChange={changeImg}/>
                     <Image 
                       className='card-img'
                       alt='img'
