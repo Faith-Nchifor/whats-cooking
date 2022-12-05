@@ -16,7 +16,7 @@ export default function Home({datas}) {
     setLoading(true)
    axios.get('./api/restau/get').then(
       resp=>{
-        console.log(resp.data);
+        console.log(resp.data.length);
         setRestaus(resp.data)
       }
     ).catch(
