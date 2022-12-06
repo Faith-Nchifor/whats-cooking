@@ -7,12 +7,16 @@ export default async function handler(req, res) {
    
     try{
       await connectToDatabase();
-      Restaurant.find().then(
-        result=>{
-          console.log(result.length)
-          res.status(200).send(result)
-        }
-      )
+      if(req.body.id){
+        Restaurant.findById(req.body.id).then(
+          result=>{
+            console.log(result)
+            res.status(200).send(result)
+          }
+        )
+      }
+      else res.status(400).send('no id found')
+      
     }
     catch(e){
       console.log(e);

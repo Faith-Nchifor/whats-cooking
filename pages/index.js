@@ -54,7 +54,7 @@ export default function Home({datas}) {
                     <Image 
                       className='card-img'
                       alt='img'
-                      src='https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg'
+                      src={r.image? r.image.url:'https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg'}
                       height={200}
                       width={250}
                     />
