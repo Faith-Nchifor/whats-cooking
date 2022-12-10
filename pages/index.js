@@ -13,19 +13,27 @@ export default function Home({datas}) {
   const [loading,setLoading]=useState(false)
   const router=useRouter()
   useEffect( ()=>{
-    setLoading(true)
-   axios.get('./api/restau/get').then(
-      resp=>{
-        console.log(resp.data.length);
-        setRestaus(resp.data)
-      }
-    ).catch(
-      e=>{
-        console.log(e);
-      }
-    )
-    .finally(()=>setLoading(false))
-  
+    let rs=sessionStorage.getItem('restau');
+    console.log(rs);
+    if(rs && rs.length>0){
+      setRestaus(rs)
+     }
+     else{
+      setLoading(true)
+      axios.get('./api/restau/get').then(
+        resp=>{
+          console.log(resp.data.length);
+          sessionStorage.setItem('user', resp.data)
+          setRestaus(resp.data)
+        }
+      ).catch(
+        e=>{
+          console.log(e);
+        }
+      )
+      .finally(()=>setLoading(false))
+     }
+
  
     
   },[])

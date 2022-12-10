@@ -22,10 +22,10 @@ export default function Header() {
             <li className="nav-item mx-md-2">
                  <button className="btn btn-primary " onClick={()=>signOut()}>Sign Out</button>                 
             </li>
-            <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search menu" aria-label="Search"/>
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+            <form className="d-flex">
+            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button className="btn btn-outline-success" type="submit">Search</button>
+          </form>
           </ul>
         )
     }
@@ -38,9 +38,9 @@ export default function Header() {
       <li className="nav-item mx-md-2">
         <Link className="nav-link active" aria-current="page" href="about.js">About</Link>
       </li>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form className="d-flex">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
   <li className="nav-item mx-md-2">
       
