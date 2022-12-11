@@ -16,6 +16,9 @@ export default function Home({datas}) {
   useEffect( ()=>{
     setLoading(true)
     console.log(router.query);
+    if(!router.query.id){
+      router.back()
+    }
     setId(router.query);
    axios.post('/api/restau/getRestau',router.query).then(
       resp=>{

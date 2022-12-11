@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React,{useEffect, useState} from 'react'
+import React,{useCallback, useEffect, useState} from 'react'
 import {Accordion, Col, Form, Modal} from 'react-bootstrap'
 import Spinner from './spinner'
 
@@ -11,7 +11,7 @@ export default function Menu({day,items}) {
     const [show,setShow]=useState(false)
     const [msg,setMsg]=useState('')
     const [loading,setLoading]=useState(false)
-    const saveDay=()=>{
+    const saveDay=useCallback(()=>{
         if(menu.length>0){
             setLoading(true)
             axios.post('/api/restau/editMenu',{
@@ -34,7 +34,7 @@ export default function Menu({day,items}) {
             setShow(true)
         }
         
-    }
+    })
    
     const [item,setItem]= useState('')
 
@@ -103,3 +103,5 @@ export default function Menu({day,items}) {
     </div>
   )
 }
+
+// React.memo(Menu)
