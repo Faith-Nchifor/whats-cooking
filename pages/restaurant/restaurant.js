@@ -11,6 +11,7 @@ export default function Home({datas}) {
   const [restau,setRestau]=useState([])
   const [id,setId]=useState(null)
   const [loading,setLoading]=useState(false)
+  const [meals,setMeals]=useState([])
   const router=useRouter()
   //const [param,setParams]=use()
   useEffect( ()=>{
@@ -23,6 +24,8 @@ export default function Home({datas}) {
    axios.post('/api/restau/getRestau',router.query).then(
       resp=>{
         setRestau(resp.data)
+        let data=resp.data;
+        
         console.log(resp.data);
       }
     ).catch(
