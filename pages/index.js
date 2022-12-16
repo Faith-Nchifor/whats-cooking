@@ -4,22 +4,17 @@ import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 import Header from '../components/header';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useCallback } from 'react';
 import { useRouter } from 'next/router';
 import Spinner from '../components/spinner';
+
 
 export default function Home({datas}) {
   const [restaus,setRestaus]=useState([])
   const [loading,setLoading]=useState(false)
   const router=useRouter()
-  useEffect( ()=>{
-    let rs=sessionStorage.getItem('restau');
-    console.log(rs);
-    if(rs && rs.length>0){
-      setRestaus(rs)
-     }
-     else{
-      setLoading(true)
+  const getRestau=useCallback((()=>{
+    setLoading(true)
       axios.get('./api/restau/get').then(
         resp=>{
           console.log(resp.data.length);
@@ -32,7 +27,17 @@ export default function Home({datas}) {
         }
       )
       .finally(()=>setLoading(false))
+  }))
+  useEffect( ()=>{
+    let rs=sessionStorage.getItem('restau');
+    console.log(rs);
+    if(rs && rs.length>0){
+      setRestaus(rs)
      }
+     else{
+      getRestau()
+     }
+
 
  
     
