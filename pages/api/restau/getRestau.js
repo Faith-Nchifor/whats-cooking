@@ -21,10 +21,11 @@ export default async function handler(req, res) {
                let restau=await Restaurant.findOne({id:id})
                if (restau._id){
                 let email=restau.email;
-                console.log(today);
-                let meals=await Menu.findOne({email:email}).select(''+today);
                 
-                res.status(200).send(meals)
+                let meals=await Menu.findOne({email:email}).select(''+today);
+                let entries=Object.entries(meals)
+                console.log(entries);
+                res.status(200).send(entries)
                }
                else{
                 return '/'
