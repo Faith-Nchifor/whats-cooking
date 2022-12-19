@@ -23,8 +23,8 @@ export default async function handler(req, res) {
                 let email=restau.email;
                 
                 let meals=await Menu.findOne({email:email}).select(''+today);
-                let entries=Object.entries(meals)
-                console.log(entries);
+                let entries=Object.values(meals)
+                console.log(Object.entries(meals)[-1]);
                 res.status(200).send(entries)
                }
                else{
