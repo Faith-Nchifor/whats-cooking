@@ -65,9 +65,8 @@ export default function Home({datas}) {
         <Image 
           src="https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg"
           alt={restau.name}
-          height={200}
-          width={300}
-          className='card-img'
+          layout='fill'
+          className='card-img w-25'
           />
           <div className='row mt-2 '>
             <div className='col'>
