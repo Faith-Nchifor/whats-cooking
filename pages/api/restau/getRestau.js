@@ -23,9 +23,9 @@ export default async function handler(req, res) {
                 let email=restau.email;
                 
                 let meals=await Menu.findOne({email:email}).select(''+today);
-                let entries=Object.values(meals)
-                console.log(Object.entries(meals)[-1]);
-                res.status(200).send(entries)
+                
+                console.log(meals[today]);
+                res.status(200).send(meals[today])
                }
                else{
                 return '/'

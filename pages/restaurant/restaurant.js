@@ -25,7 +25,7 @@ export default function Home({datas}) {
       resp=>{
         setRestau(resp.data)
         let data=resp.data;
-        
+        setMeals(data)
         console.log(resp.data);
       }
     ).catch(
@@ -65,7 +65,7 @@ export default function Home({datas}) {
         <Image 
           src="https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg"
           alt={restau.name}
-          height={300}
+          height={200}
           width={300}
           className='card-img'
           />
@@ -87,7 +87,18 @@ export default function Home({datas}) {
             </div>
           </div>
        </div>
-      
+       <h3 className='text-center'>Our Meals</h3>
+       <div className='col-md-4 mx-auto'>
+        
+        <ul>
+        {meals.length>0 && meals.map((meal,i)=>{
+          return (
+            <li key={i}>{meal}</li>
+          )
+        })}
+        </ul>
+       </div>
+      <button className=' d-block mx-auto'>Reserve Now</button>
       </main>
 
       <footer className={styles.footer}>
