@@ -20,8 +20,9 @@ export default function Home({datas}) {
     if(!router.query.id){
       router.back()
     }
-    setId(router.query);
-   axios.post('/api/restau/getRestau',router.query).then(
+    setId(router.query.id);
+    setRestau(router.query)
+   axios.post('/api/restau/getRestau',{id:router.query.id}).then(
       resp=>{
         setRestau(resp.data)
         let data=resp.data;

@@ -43,6 +43,7 @@ export default function Home({datas}) {
     
   },[])
   //console.log(users);
+  const defaultImg='https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg';
   return (
     <div className='container'>
       <Head>
@@ -67,7 +68,7 @@ export default function Home({datas}) {
                     <Image 
                       className='card-img'
                       alt='img'
-                      src={r.image? r.image.url:'https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg'}
+                      src={r.image? r.image.url:defaultImg}
                       height={200}
                       width={250}
                     />
@@ -77,7 +78,11 @@ export default function Home({datas}) {
                       pathname:'/restaurant/restaurant',
           
                       query:{
-                        id:r._id
+                        id:r._id,
+                        url:r.image?r.image.url:defaultImg,
+                        city:r.city,
+                        name:r.name
+                      
                       }
                     })}>
                       View more
