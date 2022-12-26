@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 export default function Home({datas}) {
-  const [restau,setRestau]=useState([])
+  const [restau,setRestau]=useState({})
   const [id,setId]=useState(null)
   const [loading,setLoading]=useState(false)
   const [meals,setMeals]=useState([])
@@ -24,7 +24,7 @@ export default function Home({datas}) {
     setRestau(router.query)
    axios.post('/api/restau/getRestau',{id:router.query.id}).then(
       resp=>{
-        setRestau(resp.data)
+       // setRestau(resp.data)
         let data=resp.data;
         setMeals(data)
         console.log(resp.data);
@@ -53,8 +53,8 @@ export default function Home({datas}) {
         <i className="fa fa-location-arrow"></i>
         <h2 className='text-center'>Today&apos;s Menu for {restau.name}</h2>
           {loading===true &&(
-            <div className="spinner-border" role="status">
-              <span className="sr-only">Loading...</span>
+            <div className="spinner-border mx-auto text-center" role="status">
+              <span className="sr-only"></span>
             </div>
           )}
         
@@ -64,9 +64,11 @@ export default function Home({datas}) {
       <main className={styles.main}>
        <div className='col-11 col-md-8 col-lg-6 card mx-auto'>
         <Image 
-          src="https://www.foodiesfeed.com/wp-content/uploads/2021/01/fried-egg-and-guacamole-sandwiches.jpg"
+          src={restau.url}
           alt={restau.name}
-          layout='fill'
+          //layout='fill'
+          width={100}
+          height={100}
           className='card-img w-25'
           />
           <div className='row mt-2 '>
