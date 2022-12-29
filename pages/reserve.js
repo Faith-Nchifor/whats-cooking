@@ -41,10 +41,10 @@ export default function Reserve() {
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type='tel' name='telephone' onChange={editCustDetails}/>
                     </Form.Group>
-                    {/*<Form.Group>
+                    <Form.Group>
                         <Form.Label>Day</Form.Label>
-                        <Form.Control type='date'/>
-                    </Form.Group>*/}
+                        <Form.Control type='date' required/>
+                    </Form.Group>
                     <Form.Group>
                         <Form.Label>Time</Form.Label>
                         <Form.Control type='time' name='time' onChange={editCustDetails} />

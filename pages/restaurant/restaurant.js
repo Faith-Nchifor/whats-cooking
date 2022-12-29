@@ -39,6 +39,14 @@ export default function Home({datas}) {
  
     
   },[])
+  const goToReserve=()=>{
+      if(restau.id){
+        router.push({
+          pathname:'/reserve',
+          query:{}
+        })
+      }
+  }
 
   //console.log(users);
   return (
@@ -100,7 +108,7 @@ export default function Home({datas}) {
         })}
         </ul>
        </div>
-      <button className=' d-block mx-auto'>Reserve Now</button>
+      <button className=' d-block mx-auto' onClick={goToReserve}>Reserve Now</button>
       </main>
 
       <footer className={styles.footer}>
