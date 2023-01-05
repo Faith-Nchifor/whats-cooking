@@ -3,4 +3,4 @@ This is a next js project. The app lets you
 2) place orders at any restaurant
 3) register you restaurant
 
-This is a fun work in progress
+This is an interesting work in progress
